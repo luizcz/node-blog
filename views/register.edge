@@ -18,19 +18,27 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
+       
+          @if(errors.length >0)
+            <ul class="list-group">
+              @each(erro in errors)
+                <li class="list-group-item text-danger">{{erro}}</li>
+              @endeach
+            </ul>
+          @endif
           
           <form action="/users/register" method="POST" enctype="multipart/form-data">
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
                 <label>Username</label>
-                <input type="text" class="form-control" placeholder="Username" name="username" >
+              <input type="text" class="form-control" value="{{data.username||''}}" placeholder="Username" name="username" >
                 
               </div>
             </div>
             <div class="control-group">
               <div class="form-group floating-label-form-group controls">
                 <label>Email</label>
-                <input type="text" class="form-control" placeholder="Email" name="email" >
+                <input type="text" class="form-control" value="{{data.email||''}}" placeholder="Email" name="email" >
                 
               </div>
             </div>
